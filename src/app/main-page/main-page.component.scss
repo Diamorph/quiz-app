@@ -1,0 +1,46 @@
+.main-page-container {
+  width: 100%;
+}
+
+.welcome-user-form-container {
+  width: 400px;
+  .quiz-list-container {
+    max-height: 500px;
+    height: auto;
+    overflow-y: auto;
+    .quiz-item-container {
+      height: 50px;
+      padding: 10px 30px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      font-family: Roboto,sans-serif;
+      font-size: .875rem;
+      font-weight: 500;
+      border-radius: 4px;
+      position: relative;
+      border: 2px solid var(--primary-color);
+      &:last-child {
+        margin-bottom: 0;
+      }
+      &:hover {
+        box-shadow: rgba(0, 0, 0, .2) 0 2px 4px -1px, rgba(0, 0, 0, .14) 0 4px 5px 0, rgba(0, 0, 0, .12) 0 1px 10px 0;
+        border-color: var(--primary-color-hover);
+      }
+      &.checked {
+        border-color: var(--green-color);
+        &:hover {
+          border-color: var(--green-color-hover);
+        }
+      }
+    }
+  }
+  .welcome-users-buttons-container {
+    button {
+      width: 190px;
+    }
+  }
+}
+
+.no-quizzes {
+  font-weight: bold;
+}

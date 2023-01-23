@@ -1,0 +1,120 @@
+{
+  "quizzes": [
+    {
+      "id": "85c63f94-7113-4993-8354-f88df7ee97a8",
+      "name": "Geography #1",
+      "questions": [
+        {
+          "id": "1",
+          "question": "What is the capital of Italy?",
+          "type": "single-choice",
+          "answers": [
+            "Venice",
+            "Florence",
+            "Rome",
+            "Naples"
+          ],
+          "correctAnswer": "Rome"
+        },
+        {
+          "id": "2",
+          "question": "Which river flows through London?",
+          "type": "single-choice",
+          "answers": [
+            "River Severn",
+            "River Trent",
+            "River Thames",
+            "River Great Ouse"
+          ],
+          "correctAnswer": "River Thames"
+        },
+        {
+          "id": "3",
+          "question": "Which of the following are countries in Europe?",
+          "type": "multi-choice",
+          "answers": [
+            "France",
+            "Japan",
+            "Australia",
+            "Germany",
+            "Italy",
+            "Spain"
+          ],
+          "correctAnswer": [
+            "France",
+            "Germany",
+            "Italy",
+            "Spain"
+          ]
+        },
+        {
+          "id": "4",
+          "question": "On which continent is the Sahara Desert located?",
+          "type": "text-input",
+          "correctAnswer": "Africa"
+        },
+        {
+          "id": "5",
+          "question": "How tall is Mount Everest? (m)",
+          "type": "number-input",
+          "correctAnswer": "8849"
+        },
+        {
+          "id": "6",
+          "question": "What is the longest river in the world?",
+          "type": "single-choice",
+          "answers": [
+            "Amazon River",
+            "Yangtze River",
+            "The Nile",
+            "Yellow River"
+          ],
+          "correctAnswer": "The Nile"
+        },
+        {
+          "id": "7",
+          "question": "What is the capital of the United Arab Emirates?",
+          "type": "text-input",
+          "correctAnswer": "Abu Dhabi"
+        },
+        {
+          "id": "8",
+          "question": "What is the smallest country in the world?",
+          "type": "single-choice",
+          "answers": [
+            "Andorra",
+            "Luxembourg",
+            "Vatican City",
+            "Belgium"
+          ],
+          "correctAnswer": "Vatican City"
+        },
+        {
+          "id": "9",
+          "question": "How many countries are there in the world?",
+          "type": "number-input",
+          "correctAnswer": "195"
+        },
+        {
+          "id": "10",
+          "question": "How long is the border between Canada and the USA? (km)",
+          "type": "single-choice",
+          "answers": [
+            "5891",
+            "6891",
+            "7891",
+            "8891 "
+          ],
+          "correctAnswer": "8891"
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": "Vlad_1674417178399",
+      "name": "Vlad",
+      "gradeList": []
+    }
+  ]
+}

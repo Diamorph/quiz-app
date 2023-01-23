@@ -1,0 +1,12 @@
+.overflow-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 60px);
+  overflow: auto;
+}
+
+h1.app-title {
+  font-size: 30px;
+  margin: 10px 0;
+  height: 40px;
+}

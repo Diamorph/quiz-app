@@ -1,0 +1,31 @@
+<div class="layout column main-page-container center-center">
+  <form class="layout column welcome-user-form-container" [formGroup]="quizForm" (ngSubmit)="startQuiz()">
+    <ng-container *ngIf="!showQuizList; else quizListTmp">
+      <h2 class="layout row center-center page-title">Please Type Your Name</h2>
+      <div class="input-container">
+        <input type="text" [class.error]="username.touched && username.invalid" [formControl]="username" placeholder="Name" (keyup.enter)="toggleQuizList()"/>
+      </div>
+      <button class="m-t-20" type="button" [disabled]="username.invalid" (click)="toggleQuizList()">Submit</button>
+    </ng-container>
+    <ng-template #quizListTmp>
+      <h2 class="layout row center-center page-title">Hello {{username.value}}</h2>
+      <h2 class="layout row center-center page-title">Please select a quiz</h2>
+      <div class="quiz-list-container">
+        <ng-container *ngIf="quizList.length; else noQuizList">
+          <div class="layout row center quiz-item-container" *ngFor="let quiz of quizList" (click)="chooseQuiz(quiz.id)" [class.checked]="quizId.value === quiz.id">
+            <div class="quiz-name text-overflow-ellipsis">{{quiz.name}}</div>
+          </div>
+        </ng-container>
+        <ng-template #noQuizList>
+          <div class="layout row center-center no-quizzes">
+            No quizzes available!!!
+          </div>
+        </ng-template>
+      </div>
+      <div class="layout row space-between welcome-users-buttons-container m-t-20">
+        <button type="button" class="gray-button" (click)="back()">Back</button>
+        <button type="submit" [disabled]="quizId.invalid">Start Quiz</button>
+      </div>
+    </ng-template>
+  </form>
+</div>

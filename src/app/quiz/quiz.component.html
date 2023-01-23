@@ -1,0 +1,70 @@
+<ng-container *ngIf="!quizFinished; else quizFinishedTmp">
+  <div class="quiz-container layout column center" *ngIf="!loading; else loadingTmp">
+    <div class="layout row flex-end countdown">{{timeLeft | date: 'mm:ss'}}</div>
+    <div class="quiz-title-container layout row center space-between m-b-20">
+      <h2 class="page-title">{{quiz.name}}</h2>
+      <div class="step-count">
+        {{currentQuestionNumber + 1}} / {{quiz.questions.length}}
+      </div>
+    </div>
+    <div class="layout row quiz-question">
+      {{quiz.questions[currentQuestionNumber].question}}
+    </div>
+    <form class="quiz-question-answer-container layout column m-t-20" [formGroup]="answerForm" (ngSubmit)="sendAnswer()">
+      <ng-container [ngSwitch]="quiz.questions[currentQuestionNumber].type">
+        <ng-container *ngSwitchCase="questionType.textInput">
+          <div class="input-question">
+            <input type="text" [formControl]="answerControlAsFormControl" [class.error]="answerForm.touched && answerForm.invalid" [placeholder]="quiz.questions[currentQuestionNumber].question"/>
+          </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="questionType.numberInput">
+          <div class="input-question">
+            <input type="text" appNumbersOnly [formControl]="answerControlAsFormControl" [class.error]="answerForm.touched && answerForm.invalid" [placeholder]="quiz.questions[currentQuestionNumber].question"/>
+          </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="questionType.singleChoice">
+          <div class="choice-container">
+            <div class="choice-item" *ngFor="let answer of quiz.questions[currentQuestionNumber].answers">
+              <input type="radio" [value]="answer" [formControl]="answerControlAsFormControl"> {{answer}}
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="questionType.multiChoice">
+          <div class="choice-container">
+            <div class="choice-item" *ngFor="let answer of answerControlAsFormArray.controls; let i = index">
+              <label [formArrayName]="'answer'">
+                <input type="checkbox" [formControlName]="i">
+                {{quiz.questions[currentQuestionNumber].answers[i]}}
+              </label>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+      <div class="quiz-buttons-container layout row center-center m-t-20">
+        <button type="submit" [disabled]="answerForm.invalid">Next</button>
+      </div>
+    </form>
+  </div>
+  <ng-template #loadingTmp>
+    <div class="quiz-title">Loading Quiz...</div>
+  </ng-template>
+</ng-container>
+
+<ng-template #quizFinishedTmp>
+  <ng-container *ngIf="timeLeft; else outOfTime">
+    <div class="quiz-finished-container layout row center-center">
+      You successfully finished quiz "{{quiz.name}}"
+    </div>
+    <div class="m-t-20">
+      <button (click)="goToMainPage()">Go to Main Page</button>
+    </div>
+  </ng-container>
+  <ng-template #outOfTime>
+    <div class="quiz-finished-container failure layout row center-center">
+      Time out!!!
+    </div>
+    <div class="m-t-20">
+      <button (click)="goToMainPage()">Go to Main Page</button>
+    </div>
+  </ng-template>
+</ng-template>
