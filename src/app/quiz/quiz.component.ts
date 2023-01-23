@@ -18,9 +18,9 @@ export class QuizComponent implements OnInit, OnDestroy {
   public questionType: typeof QuizQuestionType = QuizQuestionType;
   public answerForm: FormGroup;
   public quizFinished: boolean = false;
-  public quizTime: number = 1000 * 60 * 15; // 15 min
+  public quizTime: number;
   public startTime: number;
-  public timeLeft: number = this.quizTime;
+  public timeLeft: number;
   private _unsubscribe$: Subject<void> = new Subject<void>();
   constructor(
     private _quizService: QuizService,
@@ -49,6 +49,8 @@ export class QuizComponent implements OnInit, OnDestroy {
       next: (quiz) => {
         this.currentQuestionNumber = 0;
         this.quiz = quiz;
+        this.quizTime = this.quiz.time * 60 * 1000;
+        this.timeLeft = this.quizTime;
         this._createAnswerControlForNextQuestion();
         this.loading = false;
         this._timeSub();

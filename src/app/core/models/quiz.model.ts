@@ -10,6 +10,7 @@ export interface IQuizListDTOItem {
 export interface IQuiz {
   id: string;
   name: string;
+  time: number;
   questions: IQuizQuestion[];
 }
 
